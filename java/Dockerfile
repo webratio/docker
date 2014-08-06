@@ -1,6 +1,6 @@
 FROM ubuntu
 
-RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
+# RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
 RUN apt-get update -y && apt-get install -y software-properties-common python-software-properties
 RUN add-apt-repository ppa:webupd8team/java -y
 
