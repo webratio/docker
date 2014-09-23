@@ -20,35 +20,28 @@ RUN npm install -g phonegap@${PHONEGAP_VERSION}
 # Installs i386 architecture required for running 32 bit Android tools 
 RUN dpkg --add-architecture i386
 RUN apt-get update
-RUN apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386
-
-# Creates a non-root user for this docker image
-RUN groupadd -r phonegap -g 433 && \
-    useradd -u 431 -r -g phonegap -d /home/phonegap -m -s /sbin/nologin -c "PhoneGap user" phonegap
-ENV HOME /home/phonegap
-
-# Switches to the non-root user 
-USER phonegap
+RUN apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1
 
 # Installs Android SDK
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
-RUN cd && \
+RUN cd /opt && \
     wget ${ANDROID_SDK_URL} && \
     tar -xvzf ${ANDROID_SDK_FILENAME} && \
     rm ${ANDROID_SDK_FILENAME}
-ENV ANDROID_HOME /home/phonegap/android-sdk-linux
+ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-RUN echo y | android update sdk --no-ui --filter tools,platform-tools,android-${ANDROID_API_LEVEL},build-tools-${ANDROID_BUILD_TOOLS_LEVEL}
+RUN echo y | android update sdk --no-ui --filter tools,platform-tools,android-${ANDROID_API_LEVEL},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 
 # Installs Ant
 RUN cd && \
     wget http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
     tar -xvzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
-    mv apache-ant-${ANT_VERSION} /home/phonegap/ant && \
+    mv apache-ant-${ANT_VERSION} /opt/ant && \
     rm apache-ant-${ANT_VERSION}-bin.tar.gz
-ENV ANT_HOME /home/phonegap/ant
-ENV PATH ${PATH}:/home/phonegap/ant/bin
+ENV ANT_HOME /opt/ant
+ENV PATH ${PATH}:/opt/ant/bin
 
 VOLUME ["/data"]
 WORKDIR /data
+
 EXPOSE 3000
