@@ -1,6 +1,54 @@
-FROM node
+FROM dockerfile/nodejs
 
-RUN npm install -g phonegap@3.5.0-0.21.17
+# Defines environment variables
+ENV PHONEGAP_VERSION 3.5.0-0.21.17
+ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
+ENV ANT_VERSION 1.9.4
+ENV ANDROID_API_LEVEL 15 
+ENV ANDROID_BUILD_TOOLS_VERSION 20.0.0
+
+# Installs Oracle JDK 7
+RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+    add-apt-repository -y ppa:webupd8team/java && \
+    apt-get update && \
+    apt-get install -y oracle-java7-installer && \
+    rm -rf /var/lib/apt/lists/*
+
+# Installs PhoneGap
+RUN npm install -g phonegap@${PHONEGAP_VERSION}
+
+# Installs i386 architecture required for running 32 bit Android tools 
+RUN dpkg --add-architecture i386
+RUN apt-get update
+RUN apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386
+
+# Creates a non-root user for this docker image
+RUN groupadd -r phonegap -g 433 && \
+    useradd -u 431 -r -g phonegap -d /home/phonegap -m -s /sbin/nologin -c "PhoneGap user" phonegap
+ENV HOME /home/phonegap
+
+# Switches to the non-root user 
+USER phonegap
+
+# Installs Android SDK
+ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
+RUN cd && \
+    wget ${ANDROID_SDK_URL} && \
+    tar -xvzf ${ANDROID_SDK_FILENAME} && \
+    rm ${ANDROID_SDK_FILENAME}
+ENV ANDROID_HOME /home/phonegap/android-sdk-linux
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+RUN echo y | android update sdk --no-ui --filter tools,platform-tools,android-${ANDROID_API_LEVEL},build-tools-${ANDROID_BUILD_TOOLS_LEVEL}
+
+# Installs Ant
+RUN cd && \
+    wget http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    tar -xvzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    mv apache-ant-${ANT_VERSION} /home/phonegap/ant && \
+    rm apache-ant-${ANT_VERSION}-bin.tar.gz
+ENV ANT_HOME /home/phonegap/ant
+ENV PATH ${PATH}:/home/phonegap/ant/bin
+
 VOLUME ["/data"]
 WORKDIR /data
 EXPOSE 3000
