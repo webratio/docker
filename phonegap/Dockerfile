@@ -4,7 +4,7 @@ FROM dockerfile/nodejs
 ENV PHONEGAP_VERSION 3.5.0-0.21.17
 ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
 ENV ANT_VERSION 1.9.4
-ENV ANDROID_API_LEVEL 15 
+ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19 
 ENV ANDROID_BUILD_TOOLS_VERSION 20.0.0
 
 # Installs Oracle JDK 7
@@ -30,7 +30,7 @@ RUN cd /opt && \
     rm ${ANDROID_SDK_FILENAME}
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-RUN echo y | android update sdk --no-ui --filter tools,platform-tools,android-${ANDROID_API_LEVEL},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
+RUN echo y | android update sdk --no-ui --filter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 
 # Installs Ant
 RUN cd && \
