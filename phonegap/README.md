@@ -10,6 +10,14 @@ This repository contains **Dockerfile** of [PhoneGap](http://phonegap.com/) for 
 
 ### Usage
 
+#### Run `phonegap create`
+
+    docker run -v <application-parent-dir>:/data webratio/phonegap phonegap create <application-name>
+
 #### Run `phonegap serve`
 
     docker run -d -p <port>:3000 -v <application-dir>:/data webratio/phonegap phonegap serve -p 3000
+
+#### Run `phonegap build android`
+
+    docker run -v <application-dir>:/data phonegap phonegap build android
