@@ -41,6 +41,14 @@ RUN cd && \
 ENV ANT_HOME /opt/ant
 ENV PATH ${PATH}:/opt/ant/bin
 
+# Forces a create and build android in order to preload libraries
+RUN cd /tmp && \
+    phonegap create fakeapp && \
+    cd /tmp/fakeapp && \
+    phonegap build android && \
+    cd && \
+    rm -rf /tmp/fakeapp
+
 VOLUME ["/data"]
 WORKDIR /data
 
