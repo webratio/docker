@@ -1,0 +1,1 @@
+FROM webratio/java:1.7.0
