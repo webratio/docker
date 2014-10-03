@@ -9,4 +9,4 @@ ENV GROOVY_HOME /root/.gvm/groovy/current
 ENV PATH $GROOVY_HOME/bin:$PATH
 
 WORKDIR /source
-ENTRYPOINT ["groovy"]
+ENTRYPOINT ["groovy", "-Dgrape.root=/graperoot"]
