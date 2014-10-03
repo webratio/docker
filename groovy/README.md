@@ -9,4 +9,5 @@ This repository contains **Dockerfile** of [Groovy](http://groovy.codehaus.org/)
 2. `docker pull webratio/groovy`
 
 ### Usage
-docker run -v $(pwd):/source -v <grape-root-dir>:/graperoot webratio/groovy <groovy-file> 
+
+    docker run -v $(pwd):/source -v <grape-root-dir>:/graperoot webratio/groovy <groovy-file> 
