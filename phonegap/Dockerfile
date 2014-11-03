@@ -1,7 +1,7 @@
 FROM dockerfile/nodejs
 
 # Defines environment variables
-ENV PHONEGAP_VERSION 3.5.0-0.21.17
+ENV PHONEGAP_VERSION 3.5.0-0.21.18
 ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
 ENV ANT_VERSION 1.9.4
 ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19 
