@@ -4,10 +4,9 @@ FROM webratio/java:7
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
-# Installs curl
+# Installs curl and GVM
 RUN apt-get update && \
-    apt-get install -y curl unzip 
-
-# Installs Groovy
-USER root
-RUN curl -s get.gvmtool.net | bash
+    apt-get install -y curl unzip && \
+    curl -s get.gvmtool.net | bash && \
+    apt-get autoremove -y && \
+    apt-get clean
