@@ -1,23 +1,12 @@
-FROM webratio/java:7
+FROM webratio/gvm
 
 # Defines environment variables
 ENV GROOVY_VERSION 2.3.7
-ENV HOME /root
 
-# Installs curl
-RUN apt-get update && \
-    apt-get install -y curl unzip 
-
-# Installs Groovy
-USER root
-USER root
-RUN curl -s get.gvmtool.net | bash
+# Installs Groovy 
 RUN /bin/bash -c "source /root/.gvm/bin/gvm-init.sh && gvm install groovy ${VERSION}"
-#RUN source "/root/.gvm/bin/gvm-init.sh"
-#RUN chmod +x /root/.gvm/bin/gvm-init.sh 
-#RUN /root/.gvm/bin/gvm-init.sh
-#RUN echo $PATH
-#RUN gvm install groovy ${GROOVY_VERSION}
+ENV GROOVY_HOME /root/.gvm/groovy/current
+ENV PATH $GROOVY_HOME/bin:$PATH
 
-#VOLUME ["/data"]
-#WORKDIR /data
+WORKDIR /source
+ENTRYPOINT ["groovy", "-Dgrape.root=/graperoot"]
