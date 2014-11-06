@@ -1,4 +1,4 @@
-## Phonegap Dockerfile
+## PhoneGap Dockerfile
 
 This repository contains **Dockerfile** of [PhoneGap](http://phonegap.com/) for [Docker](https://www.docker.com/)'s [build](https://registry.hub.docker.com/u/webratio/phonegap/) published to the public [Docker Hub](https://hub.docker.com/).
 
