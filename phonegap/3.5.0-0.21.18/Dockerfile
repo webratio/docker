@@ -13,8 +13,8 @@ RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true 
     apt-get autoremove -y && \
     apt-get clean && \
     cd && \
-    wget http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
-    tar -xvzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    wget -q http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    tar -xzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
     mv apache-ant-${ANT_VERSION} /opt/ant && \
     rm apache-ant-${ANT_VERSION}-bin.tar.gz
 ENV ANT_HOME /opt/ant
@@ -23,13 +23,13 @@ ENV PATH ${PATH}:/opt/ant/bin
 # Installs Android SDK
 ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19 
-ENV ANDROID_BUILD_TOOLS_VERSION 20.0.0
+ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21 
+ENV ANDROID_BUILD_TOOLS_VERSION 21.1.0
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN cd /opt && \
-    wget ${ANDROID_SDK_URL} && \
-    tar -xvzf ${ANDROID_SDK_FILENAME} && \
+    wget -q ${ANDROID_SDK_URL} && \
+    tar -xzf ${ANDROID_SDK_FILENAME} && \
     rm ${ANDROID_SDK_FILENAME} && \
     echo y | android update sdk --no-ui -a --filter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 
