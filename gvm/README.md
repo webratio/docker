@@ -6,7 +6,8 @@ This repository contains **Dockerfile** of [GVM - the Groovy enVironment Manager
 
 1. Install [Docker](https://www.docker.com/).
 
-2. `docker pull webratio/gvm`
+2. Pull the image
+  * `docker pull webratio/gvm`
 
 ### Usage
 
