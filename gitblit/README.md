@@ -6,7 +6,8 @@ This repository contains **Dockerfile** of [Gitblit](http://gitblit.com/) for [D
 
 1. Install [Docker](https://www.docker.com/).
 
-2. `docker pull webratio/gitblit`
+2. Pull the image
+  * `docker pull webratio/gitblit`
 
 ### Usage
 
