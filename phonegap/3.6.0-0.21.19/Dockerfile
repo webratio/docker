@@ -19,6 +19,7 @@ RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true 
     rm apache-ant-${ANT_VERSION}-bin.tar.gz
 ENV ANT_HOME /opt/ant
 ENV PATH ${PATH}:/opt/ant/bin
+ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
 
 # Installs Android SDK
 ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
