@@ -6,7 +6,10 @@ This repository contains **Dockerfile** of [PhoneGap](http://phonegap.com/) for 
 
 1. Install [Docker](https://www.docker.com/).
 
-2. `docker pull webratio/phonegap`
+2. Pull the image
+  * `docker pull webratio/phonegap`
+  * `docker pull webratio/phonegap:3.5.0`
+  * `docker pull webratio/phonegap:3.5.0-0.21.18`
 
 ### Usage
 
