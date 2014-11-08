@@ -9,3 +9,4 @@ This repository contains **Dockerfile** of [Java](https://www.java.com/) for [Do
 2. Pull the image 
   * `docker pull webratio/java`
   * `docker pull webratio/java:7`
+  * `docker pull webratio/java:8`
