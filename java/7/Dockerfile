@@ -9,3 +9,4 @@ RUN apt-get update -y && \
     apt-get remove software-properties-common -y && \
     apt-get autoremove -y && \
     apt-get clean
+ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
