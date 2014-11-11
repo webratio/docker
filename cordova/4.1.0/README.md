@@ -27,6 +27,11 @@ This repository contains **Dockerfile** of [Cordova](http://cordova.apache.org/)
 
     docker run -v <app-dir>:/data webratio/cordova cordova platform add android
 
+#### Run `cordova serve`
+
+    docker run -v <app-dir>:/data webratio/cordova cordova serve
+
 #### Run `cordova build android`
 
     docker run -v <app-dir>:/data webratio/cordova cordova build android
+
