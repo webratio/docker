@@ -16,6 +16,8 @@ This repository contains **Dockerfile** of [Cordova](http://cordova.apache.org/)
   * `docker pull webratio/cordova:4.0.1`
   * `docker pull webratio/cordova:4.1`
   * `docker pull webratio/cordova:4.1.0`
+  * `docker pull webratio/cordova:4.1.1`
+  * `docker pull webratio/cordova:4.1.2`
 
 ### Usage
 
