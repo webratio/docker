@@ -8,12 +8,12 @@ This repository contains **Dockerfile** of [Groovy](http://groovy.codehaus.org/)
 
 2. Pull the image 
   * `docker pull webratio/groovy`
-  * `docker pull webratio/groovy:2.4`
-  * `docker pull webratio/groovy:2.4.0`
   * `docker pull webratio/groovy:2.3`
   * `docker pull webratio/groovy:2.3.7`
   * `docker pull webratio/groovy:2.3.8`
   * `docker pull webratio/groovy:2.3.9`
+  * `docker pull webratio/groovy:2.4`
+  * `docker pull webratio/groovy:2.4.0`
   
 ### Usage
 
