@@ -11,7 +11,7 @@ This repository contains **Dockerfile** of [PostgreSQL](http://www.postgresql.or
 
 ### Usage
 
-See https://registry.hub.docker.com/_/postgres/
+See the verified PostgreSQL image [documentation](https://registry.hub.docker.com/_/postgres/)
 
 #### Add PL/Perl to a database
 
