@@ -7,4 +7,6 @@ This repository contains **Dockerfile** of [Node.js](http://nodejs.org/) combine
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image
-  * `docker pull webratio/nodejs-with-android-sdk`
+  * `docker pull webratio/nodejs-with-android-sdk:0.10.33`
+  * `docker pull webratio/nodejs-with-android-sdk:0.10.36`
+  * `docker pull webratio/nodejs-with-android-sdk`  
