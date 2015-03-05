@@ -17,8 +17,9 @@ This repository contains **Dockerfile** of [PhoneGap](http://phonegap.com/) for 
   * `docker pull webratio/phonegap:4.0.0`
   * `docker pull webratio/phonegap:4.0.0-0.22.7`
   * `docker pull webratio/phonegap:4.1.2`
-  * `docker pull webratio/phonegap:4.1.2-0.22.9`
-  
+  * `docker pull webratio/phonegap:4.1.2-0.22.12`
+  * `docker pull webratio/phonegap:4.2.0`
+  * `docker pull webratio/phonegap:4.2.0-0.24.2`
 
 ### Usage
 
