@@ -18,6 +18,7 @@ This repository contains **Dockerfile** of [Groovy](http://groovy.codehaus.org/)
   * `docker pull webratio/groovy:2.4.0`
   * `docker pull webratio/groovy:2.4.1`
   * `docker pull webratio/groovy:2.4.2`
+  * `docker pull webratio/groovy:2.4.3`
   
 ### Usage
 
