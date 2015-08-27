@@ -9,3 +9,5 @@ This repository contains **Dockerfile** of [Apache Ant](http://ant.apache.org/) 
 2. Pull the image
   * `docker pull webratio/ant`
   * `docker pull webratio/ant:1.9.4`
+  * `docker pull webratio/ant:1.9.5`
+  * `docker pull webratio/ant:1.9.6`
