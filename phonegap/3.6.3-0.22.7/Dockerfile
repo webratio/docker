@@ -6,6 +6,7 @@ ENV PHONEGAP_VERSION 3.6.3-0.22.7
 RUN npm install -g npm && \
     npm install -g phonegap@${PHONEGAP_VERSION} && \
     npm install -g xmldom && \
+    npm install -g xpath && \
     cd /tmp && \
     phonegap create fakeapp && \
     cd /tmp/fakeapp && \
