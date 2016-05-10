@@ -1,3 +1,3 @@
-Docker Images
+Webratio-Docker Images
 =================
-[Docker](https://www.docker.com/) images mantained by [WebRatio] (https://www.webratio.com)
+All rights by https://www.webratio.com,  just a clone of https://github.com/webratio/docker for personal adjustments.

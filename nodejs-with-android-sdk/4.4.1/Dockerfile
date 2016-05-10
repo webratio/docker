@@ -1,4 +1,4 @@
-FROM webratio/android-sdk:r24.4.1
+FROM nmaas87/webratio-android-sdk:r24.4.1
 
 # Installs Node.js
 ENV NODE_VERSION 4.4.1

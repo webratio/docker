@@ -1,4 +1,4 @@
-FROM webratio/java:7
+FROM nmaas87/webratio-java:8
 
 # Installs Ant
 ENV ANT_VERSION 1.9.6

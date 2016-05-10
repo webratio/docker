@@ -1,4 +1,4 @@
-FROM webratio/ant
+FROM nmaas87/webratio-ant
 
 ENV ANDROID_SDK_VERSION r24.4.1
 ENV ANDROID_BUILD_TOOLS_VERSION 23.0.3
@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 && \
 # Installs Android SDK
 ENV ANDROID_SDK_FILENAME android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23 
+ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN cd /opt && \
@@ -25,4 +25,3 @@ RUN cd /opt && \
     echo y | android update sdk --no-ui --all --filter "extra-android-support" && \
     echo y | android update sdk --no-ui --all --filter "extra-android-m2repository" && \
     echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
-

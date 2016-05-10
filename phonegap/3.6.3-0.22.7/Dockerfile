@@ -1,4 +1,4 @@
-FROM webratio/nodejs-with-android-sdk
+FROM nmaas87/webratio-nodejs-with-android-sdk
 
 # Installs PhoneGap
 # Forces a create and build in order to preload libraries
