@@ -1,7 +1,7 @@
-FROM webratio/android-sdk:r24.4.1
+FROM nmaas87/webratio-android-sdk
 
 # Installs Node.js
-ENV NODE_VERSION 4.4.1
+ENV NODE_VERSION 4.4.4
 RUN cd && \
     wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
     tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \
