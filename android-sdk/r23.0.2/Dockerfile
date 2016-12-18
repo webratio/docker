@@ -1,8 +1,5 @@
 FROM nmaas87/webratio-ant
 
-ENV ANDROID_SDK_VERSION r24.4.1
-ENV ANDROID_BUILD_TOOLS_VERSION 23.0.3
-
 # Installs i386 architecture required for running 32 bit Android tools
 RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
@@ -12,9 +9,10 @@ RUN dpkg --add-architecture i386 && \
     apt-get clean
 
 # Installs Android SDK
-ENV ANDROID_SDK_FILENAME android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
+ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23
+ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21
+ENV ANDROID_BUILD_TOOLS_VERSION 21.1.0
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN cd /opt && \
