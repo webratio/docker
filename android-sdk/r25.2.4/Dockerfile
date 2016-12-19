@@ -1,7 +1,7 @@
 FROM nmaas87/webratio-ant
 
 ENV ANDROID_SDK_VERSION r25.2.4
-ENV ANDROID_BUILD_TOOLS_VERSION 25.0.3
+ENV ANDROID_BUILD_TOOLS_VERSION 25.0.2
 
 # everything after build tools 23.0.1 is 64bit only: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences 
 RUN apt-get update -y && \
