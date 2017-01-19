@@ -1,4 +1,4 @@
-## Java Dockerfile
+## MongoDB Replica Set Dockerfile
 
 This repository contains **Dockerfile** of [MongoDB](https://www.mongodb.com/) suitable for replica set for [Docker](https://www.docker.com/)'s [build](https://registry.hub.docker.com/u/webratio/java/) published to the public [Docker Hub](https://hub.docker.com/).
 
