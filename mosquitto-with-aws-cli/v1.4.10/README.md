@@ -1,6 +1,6 @@
-## Java Dockerfile
+## Mosquitto Dockerfile
 
-This repository contains **Dockerfile** of [Mosquitto](https://mosquitto.org/) combined with [AWS CLI](https://aws.amazon.com/cli/) for [Docker](https://www.docker.com/)'s [build](https://registry.hub.docker.com/u/webratio/java/) published to the public [Docker Hub](https://hub.docker.com/).
+This repository contains **Dockerfile** of [Mosquitto](https://mosquitto.org/) combined with [AWS CLI](https://aws.amazon.com/cli/) for [Docker](https://www.docker.com/)'s [build](https://registry.hub.docker.com/u/webratio/mosquitto-with-aws-cli/) published to the public [Docker Hub](https://hub.docker.com/).
 
 ### Installation
 

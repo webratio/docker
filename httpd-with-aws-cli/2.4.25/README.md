@@ -1,6 +1,6 @@
-## Java Dockerfile
+## Apache HTTP Server Dockerfile
 
-This repository contains **Dockerfile** of [Apache HTTP Server](https://httpd.apache.org/) combined with [AWS CLI](https://aws.amazon.com/cli/) for [Docker](https://www.docker.com/)'s [build](https://registry.hub.docker.com/u/webratio/java/) published to the public [Docker Hub](https://hub.docker.com/).
+This repository contains **Dockerfile** of [Apache HTTP Server](https://httpd.apache.org/) combined with [AWS CLI](https://aws.amazon.com/cli/) for [Docker](https://www.docker.com/)'s [build](https://registry.hub.docker.com/u/webratio/httpd-with-aws-cli/) published to the public [Docker Hub](https://hub.docker.com/).
 
 ### Installation
 
