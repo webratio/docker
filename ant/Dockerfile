@@ -1,7 +1,7 @@
-FROM nmaas87/webratio-java:8
+FROM java:8-jdk
 
 # Installs Ant
-ENV ANT_VERSION 1.9.7
+ENV ANT_VERSION 1.10.1
 RUN cd && \
     wget -q http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
     tar -xzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
