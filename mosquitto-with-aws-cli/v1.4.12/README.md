@@ -7,4 +7,4 @@ This repository contains **Dockerfile** of [Mosquitto](https://mosquitto.org/) c
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image 
-  * `docker pull webratio/mosquitto-with-aws-cli:v1.4.10`
+  * `docker pull webratio/mosquitto-with-aws-cli:v1.4.12`
