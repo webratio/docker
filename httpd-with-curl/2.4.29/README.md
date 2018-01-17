@@ -7,5 +7,5 @@ This repository contains **Dockerfile** of [Apache HTTP Server](https://httpd.ap
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image 
-  * `docker pull webratio/httpd-with-curl:2.4.23`
+  * `docker pull webratio/httpd-with-curl:2.4.29`
   * `docker pull webratio/httpd-with-curl:2.4`
