@@ -7,5 +7,5 @@ This repository contains **Dockerfile** of [Redis Sentinel](https://redis.io/top
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image 
-  * `docker pull webratio/redis-sentinel:3.2.6`
+  * `docker pull webratio/redis-sentinel:3.2.6b`
   * `docker pull webratio/redis-sentinel:3.2`
