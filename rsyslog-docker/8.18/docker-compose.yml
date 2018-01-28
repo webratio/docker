@@ -1,0 +1,10 @@
+version: '3.2'
+services:
+   rsyslog:
+      image: webratio/rsyslog-docker:8.18
+      container_name: rsyslogd
+      volumes:
+          - /var/log/docker:/var/log/
+      ports:
+          - "10514:10514/udp"
+      restart: always
