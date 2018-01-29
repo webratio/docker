@@ -20,10 +20,10 @@ RUN chmod 644 /etc/rsyslog.conf
 
 COPY ./rsyslog.d/* /etc/rsyslog.d/
 
-COPY run-logrotate.sh /run-logrotate.sh 
+COPY run-logrotate /run-logrotate
 COPY entrypoint.sh /entrypoint.sh
 
-RUN chmod 755 /run-logrotate.sh
+RUN chmod 755 /run-logrotate
 RUN chmod 755 /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
