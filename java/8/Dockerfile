@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 
 RUN apt-get update -y && \
-    apt-get install -y dos2unix software-properties-common && \
+    apt-get install -y dos2unix software-properties-common curl && \
     add-apt-repository ppa:webupd8team/java -y && \
     apt-get update -y && \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
