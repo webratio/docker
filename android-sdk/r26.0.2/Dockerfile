@@ -23,4 +23,4 @@ RUN mkdir -p /opt/sdk && \
     wget -q ${ANDROID_SDK_URL} && \
     unzip ${ANDROID_SDK_FILENAME} -d ${ANDROID_HOME} && \
     rm ${ANDROID_SDK_FILENAME} && \
-    echo y | android update sdk --no-ui -a --filter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
+    yes | android update sdk --no-ui -a --filter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
