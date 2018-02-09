@@ -11,4 +11,5 @@ This repository contains **Dockerfile** of [Node.js](http://nodejs.org/) combine
   * `docker pull webratio/nodejs-with-android-sdk:0.10.36`
   * `docker pull webratio/nodejs-with-android-sdk:4.4.1`
   * `docker pull webratio/nodejs-with-android-sdk:6.9.5`
+  * `docker pull webratio/nodejs-with-android-sdk:8.9.4`
   * `docker pull webratio/nodejs-with-android-sdk`  
