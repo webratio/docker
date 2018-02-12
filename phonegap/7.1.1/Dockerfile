@@ -3,6 +3,7 @@ FROM webratio/nodejs-with-android-sdk:8.9.4
 # Installs PhoneGap
 # Forces a create and build in order to preload libraries
 ENV PHONEGAP_VERSION 7.1.1
+ENV ANDROID_PLATFORM_VERSION 7.0.0
 ENV GRADLE_HOME /opt/gradle
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
 RUN apt-get update -y && \
@@ -13,16 +14,18 @@ RUN apt-get update -y && \
     npm install -g phonegap@${PHONEGAP_VERSION} && \
     npm install -g xmldom && \
     npm install -g xpath && \
-    wget -P /tmp/ https://services.gradle.org/distributions/gradle-4.5.1-bin.zip && \
-    unzip /tmp/gradle-4.5.1-bin.zip -d /opt/ && \
-    mv /opt/gradle-4.5.1 ${GRADLE_HOME} && \
-    rm -f /tmp/gradle-4.5.1-bin.zip && \
+    wget -P /opt/ https://services.gradle.org/distributions/gradle-4.1-all.zip && \
+    unzip /opt/gradle-4.1-all.zip -d /opt/ && \
+    mv /opt/gradle-4.1 ${GRADLE_HOME} && \
     cd /tmp && \
     phonegap create fakeapp --no-insight && \
     cd /tmp/fakeapp && \
-    phonegap build android && \
+    sed -i 's|name="android-minSdkVersion" value="14"|name="android-minSdkVersion" value="19"|g' /tmp/fakeapp/config.xml && \
+    phonegap cordova platform add android@${ANDROID_PLATFORM_VERSION} --force && \
+    phonegap build android --verbose && \
     cd && \
     rm -rf /tmp/fakeapp
+ENV CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL file:///opt/gradle-4.1-all.zip
 
 VOLUME ["/data"]
 WORKDIR /data
