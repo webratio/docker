@@ -7,5 +7,5 @@ This repository contains **Dockerfile** of [RabbitMQ](https://www.rabbitmq.com/)
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image 
-  * `docker pull webratio/rabbitmq-cluster:3.6.6`
-  * `docker pull webratio/rabbitmq-cluster:3.6`
+  * `docker pull alessandrovito/rabbitmq-cluster:3.6.15`
+  * `docker pull alessandrovito/rabbitmq-cluster:3.6`
