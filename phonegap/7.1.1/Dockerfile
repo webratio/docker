@@ -14,6 +14,12 @@ RUN apt-get update -y && \
     npm install -g phonegap@${PHONEGAP_VERSION} && \
     npm install -g xmldom && \
     npm install -g xpath && \
+    npm install -g fs-extra && \
+    npm install -g lodash && \
+    npm install -g iconv-lite && \
+    npm install -g xml2js && \
+    npm install -g xcode && \
+    npm install -g xml-writer && \
     wget -P /opt/ https://services.gradle.org/distributions/gradle-4.1-all.zip && \
     unzip /opt/gradle-4.1-all.zip -d /opt/ && \
     mv /opt/gradle-4.1 ${GRADLE_HOME} && \
