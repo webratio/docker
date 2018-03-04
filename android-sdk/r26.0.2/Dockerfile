@@ -1,7 +1,7 @@
 FROM nmaas87/webratio-ant
 
 ENV ANDROID_SDK_VERSION r26.0.2
-ENV ANDROID_BUILD_TOOLS_VERSION 25.0.3
+ENV ANDROID_BUILD_TOOLS_VERSION 27.0.3
 
 # everything after build tools 23.0.1 is 64bit only: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences 
 RUN apt-get update -y && \
@@ -28,7 +28,7 @@ RUN cd /opt && \
     echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
 
 # Installs Node.js
-ENV NODE_VERSION 6.9.5
+ENV NODE_VERSION 9.7.1
 RUN cd && \
     wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
     tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \
