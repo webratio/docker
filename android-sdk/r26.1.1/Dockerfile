@@ -23,10 +23,8 @@ RUN cd /opt && \
     wget -q ${ANDROID_SDK_URL} && \
     unzip ${ANDROID_SDK_FILENAME} && \
     rm ${ANDROID_SDK_FILENAME} && \
-    echo y | android update sdk --no-ui --all --filter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION} && \
-    echo y | android update sdk --no-ui --all --filter "extra-android-support" && \
-    echo y | android update sdk --no-ui --all --filter "extra-android-m2repository" && \
-    echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
+    yes | tools/bin/sdkmanager --licenses && \
+    tools/bin/sdkmanager tools platform-tools "platforms;android-15" "platforms;android-16" "platforms;android-17" "platforms;android-18" "platforms;android-19" "platforms;android-20" "platforms;android-21" "platforms;android-22" "platforms;android-23" "platforms;android-24" "platforms;android-25" "platforms;android-26" "platforms;android-27" "extras;android;m2repository" "extras;google;m2repository" "build-tools;27.0.3"
 
 # Installs Node.js
 ENV NODE_VERSION 9.8.0
