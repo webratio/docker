@@ -34,3 +34,14 @@ RUN cd && \
     mv node-v${NODE_VERSION}-linux-x64 /opt/node && \
     rm node-v${NODE_VERSION}-linux-x64.tar.gz
 ENV PATH ${PATH}:/opt/node/bin
+
+# Install Gradle
+ENV GRADLE_VERSION 4.6
+RUN mkdir /opt/gradle && \
+    cd /opt/gradle && \
+    wget -q http://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
+    unzip gradle-*-bin.zip && \
+    mv gradle-*/* . && \
+    rm gradle-*-bin.zip && \
+    rm -rf gradle-*
+ENV PATH ${PATH}:/opt/gradle/bin
