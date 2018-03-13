@@ -1,6 +1,7 @@
 FROM nmaas87/webratio-ant
 
-ENV ANDROID_SDK_VERSION r26.0.2
+ENV ANDROID_SDK_VERSION r26.1.1
+ENV ANDROID_SDK_BUILD 4333796
 ENV ANDROID_BUILD_TOOLS_VERSION 27.0.3
 
 # everything after build tools 23.0.1 is 64bit only: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences 
@@ -11,9 +12,9 @@ RUN apt-get update -y && \
     apt-get clean
 
 # Installs Android SDK
-ENV ANDROID_SDK_FILENAME tools_${ANDROID_SDK_VERSION}-linux.zip
+ENV ANDROID_SDK_FILENAME sdk-tools-linux-${ANDROID_SDK_BUILD}.zip
 ENV ANDROID_SDK_URL http://dl.google.com/android/repository/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23,android-24,android-25,android-26
+ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23,android-24,android-25,android-26,android-27
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN cd /opt && \
@@ -28,7 +29,7 @@ RUN cd /opt && \
     echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
 
 # Installs Node.js
-ENV NODE_VERSION 9.7.1
+ENV NODE_VERSION 9.8.0
 RUN cd && \
     wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
     tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \

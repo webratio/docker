@@ -7,7 +7,7 @@ This repository contains **Dockerfile** of [Android SDK](https://developer.andro
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image
-  * `docker pull nmaas87/webratio-android-sdk:r25.2.5`
+  * `docker pull nmaas87/webratio-android-sdk:r26.1.1`
   
 ### Infos
 #### SDK Tools Link
