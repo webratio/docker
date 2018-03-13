@@ -1,4 +1,4 @@
-FROM nmaas87/webratio-android-sdk:r25.2.5
+FROM nmaas87/webratio-android-sdk:r26.1.1
 
 # Installs PhoneGap
 # Forces a create and build in order to preload libraries
