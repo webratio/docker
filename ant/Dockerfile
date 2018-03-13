@@ -1,4 +1,4 @@
-FROM java:8-jdk
+FROM openjdk:8-jdk
 
 # Installs Ant
 ENV ANT_VERSION 1.10.2

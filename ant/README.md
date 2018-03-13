@@ -11,7 +11,7 @@ This repository contains **Dockerfile** of [Apache Ant](http://ant.apache.org/) 
 
 ### Info
 #### Platform
-Currently using OpenJDK 8 from Docker Hub and Ant 1.10.1
+Currently using OpenJDK 8 from Docker Hub and Ant 1.10.2
 
 #### Link for Apache Ant files
 http://www.us.apache.org/dist//ant/binaries/
