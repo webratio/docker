@@ -32,6 +32,7 @@ RUN apt-get update -y && \
     cd && \
     rm -rf /tmp/fakeapp
 ENV CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL file:///opt/gradle-4.1-all.zip
+ADD init.gradle /root/.gradle
 
 VOLUME ["/data"]
 WORKDIR /data
