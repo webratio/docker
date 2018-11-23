@@ -7,4 +7,4 @@ This repository contains **Dockerfile** of [Mosquitto](https://mosquitto.org/) f
 1. Install [Docker](https://www.docker.com/).
 
 2. Pull the image 
-  * `docker pull webratio/mosquitto:v1.4.14`
+  * `docker pull webratio/mosquitto-with-auth-plugin:v1.4.14`
