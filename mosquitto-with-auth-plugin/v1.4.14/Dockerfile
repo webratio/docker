@@ -18,6 +18,7 @@ RUN \
         && make install && ldconfig \
         && git clone https://github.com/jpmens/mosquitto-auth-plug.git \
         && cd mosquitto-auth-plug \
+        && git checkout 7ff04a68c -b stable_branch \
         && cp config.mk.in config.mk \
         && sed -i "s/BACKEND_HTTP ?= no/BACKEND_HTTP ?= yes/" config.mk \
         && sed -i "s/BACKEND_MYSQL ?= yes/BACKEND_MYSQL ?= no/" config.mk \
