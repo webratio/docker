@@ -3,8 +3,8 @@ FROM webratio/nodejs-with-android-sdk:14_sdk-30
 # Installs PhoneGap
 # Forces a create and build in order to preload libraries
 ENV PHONEGAP_VERSION 7.1.1
-ENV ANDROID_PLATFORM_VERSION 9.0.0
-ENV GRADLE_VERSION 6.5
+ENV ANDROID_PLATFORM_VERSION 8.1.0
+ENV GRADLE_VERSION 4.10.3
 ENV GRADLE_HOME /opt/gradle
 ENV ANDROID_SDK_ROOT /opt/sdk
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
@@ -28,7 +28,8 @@ RUN apt-get update -y && \
     cd /tmp && \
     phonegap create fakeapp --no-insight && \
     cd /tmp/fakeapp && \
-    sed -i 's|name="android-minSdkVersion" value="14"|name="android-minSdkVersion" value="22"|g' /tmp/fakeapp/config.xml && \
+    sed -i 's|name="android-minSdkVersion" value="14"|name="android-minSdkVersion" value="19"|g' /tmp/fakeapp/config.xml && \
+    sed -i '/<platform name="android">/a \ \ \ \ \ \ \ \ <preference name="android-targetSdkVersion" value="29" />' /tmp/fakeapp/config.xml && \
     phonegap cordova platform add android@${ANDROID_PLATFORM_VERSION} --force && \
     phonegap build android --verbose && \
     cd && \

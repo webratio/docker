@@ -4,7 +4,7 @@ FROM webratio/nodejs-with-android-sdk:14_sdk-30
 # Forces a create and build in order to preload libraries
 ENV PHONEGAP_VERSION 9.0.0
 ENV ANDROID_PLATFORM_VERSION 8.1.0
-ENV GRADLE_VERSION 6.5
+ENV GRADLE_VERSION 4.10.3
 ENV GRADLE_HOME /opt/gradle
 ENV ANDROID_SDK_ROOT /opt/sdk
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
