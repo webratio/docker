@@ -1,0 +1,19 @@
+// Defines the correct order of the repositories
+
+buildscript {
+    repositories {
+        maven {
+            url "https://maven.google.com"
+        }
+		jcenter()
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url "https://maven.google.com"
+        }
+		jcenter()
+    }
+}
