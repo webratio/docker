@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:jammy
 
 ARG TARGETARCH
 
