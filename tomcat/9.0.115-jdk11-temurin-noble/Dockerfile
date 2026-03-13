@@ -4,7 +4,7 @@ FROM tomcat:9.0.115-jdk11-temurin-noble
 ARG YOURKIT_URL=https://webratio-public-resources.s3.eu-central-1.amazonaws.com/YourKit
 ARG YOURKIT_VERSION=2019.1
 ARG YOURKIT_BUILD=b133
-ARG MYSQL_JDBC_DRIVER_URL=https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar
+ARG MYSQL_JDBC_DRIVER_URL=https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.6.0/mysql-connector-j-9.6.0.jar
 ARG POSTGRESQL_JDBC_DRIVER_URL=https://jdbc.postgresql.org/download/postgresql-42.7.9.jar
 ARG JAVA_MAIL_VERSION=1.6.2
 ARG JAVA_ACTIVATION_VERSION=1.2.0
