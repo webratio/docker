@@ -11,6 +11,14 @@ ARG JAVA_MAIL_VERSION=1.6.2
 ENV UMASK="0022"
 ENV DEBUG="false"
 ENV PROFILING="false"
+ENV PORT="8080"
+ENV CONNECTION_TIMEOUT="20000"
+ENV SECURE="TRUE"
+ENV SCHEME="https"
+ENV REDIRECT_PORT="8443"
+ENV PROXY_PORT="443"
+ENV MAX_HTTP_HEADER_SIZE="65536"
+ENV MAX_PARAMETER_COUNT="-1"
 
 # 1. Install utilities & Clean webapps
 RUN apt-get update -y && \
@@ -37,13 +45,13 @@ RUN echo 'JAVA_OPTS="${MORE_JAVA_OPTS} -Xmx${JAVA_HEAP_SIZE} -Xms${JAVA_HEAP_SIZ
 # We delete the default connector (the one that starts with <Connector port="8080") 
 # and insert our custom Executor + Connector in its place.
 RUN EXEC='<Executor name="sharedThreadPool" namePrefix="catalina-exec-" maxThreads="${TOMCAT_MAX_THREADS}" minSpareThreads="${TOMCAT_MIN_SPARE_THREADS}"/>' && \
-    CONN='<Connector URIEncoding="UTF-8" executor="sharedThreadPool" port="8080" protocol="HTTP/1.1" connectionTimeout="20000" asyncTimeout="${TOMCAT_ASYNC_TIMEOUT}" secure="true" scheme="https" redirectPort="8443" proxyPort="443" server="-" compression="${TOMCAT_CONNECTOR_COMPRESSION}" maxHttpHeaderSize="65536" maxParameterCount="-1"><UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol"/></Connector>' && \
+    CONN='<Connector URIEncoding="UTF-8" executor="sharedThreadPool" port="${PORT}" protocol="HTTP/1.1" connectionTimeout="${CONNECTION_TIMEOUT}" asyncTimeout="${TOMCAT_ASYNC_TIMEOUT}" secure="${SECURE}" scheme="${SCHEME}" redirectPort="${REDIRECT_PORT}" proxyPort="${PROXY_PORT}" server="-" compression="${TOMCAT_CONNECTOR_COMPRESSION}" maxHttpHeaderSize="${MAX_HTTP_HEADER_SIZE}" maxParameterCount="${MAX_PARAMETER_COUNT}"><UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol"/></Connector>' && \
     # Remove the standard 8080 connector block entirely
     sed -i '/<Connector port="8080"/,/ \/>/d' /usr/local/tomcat/conf/server.xml && \
     # Insert the new components after the Service opening tag
     sed -i "/<Service name=\"Catalina\">/a \    $EXEC\n    $CONN" /usr/local/tomcat/conf/server.xml && \
     # Disable error page details
-    sed -i '/<\/Host>/i \  <Valve className="org.apache.catalina.valves.ErrorReportValve" showReport="false" showServerInfo="false" />' /usr/local/tomcat/conf/server.xml
+    sed -i '/<\/Host>/i \  <Valve className="org.apache.catalina.valves.ErrorReportValve" showReport="${DEBUG}" showServerInfo="${DEBUG}" />' /usr/local/tomcat/conf/server.xml
 
 # 4. JSP Optimizations in web.xml
 RUN sed -i '/<servlet-class>org.apache.jasper.servlet.JspServlet<\/servlet-class>/a \
