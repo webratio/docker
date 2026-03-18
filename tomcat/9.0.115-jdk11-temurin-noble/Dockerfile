@@ -34,7 +34,7 @@ RUN echo 'JAVA_OPTS="${MORE_JAVA_OPTS} -Xmx${JAVA_HEAP_SIZE} -Xms${JAVA_HEAP_SIZ
     echo 'CATALINA_OPTS="${MORE_CATALINA_OPTS} -Dorg.apache.jasper.runtime.JspFactoryImpl.USE_POOL=false -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource"' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'if [ "$DEBUG" = "true" ]; then' >> /usr/local/tomcat/bin/setenv.sh && \
     echo '  echo "DEBUG: Remote debugging enabled on port 8000"' >> /usr/local/tomcat/bin/setenv.sh && \
-    echo '  export JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8000"' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '  export JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'fi' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'if [ "$PROFILING" = "true" ]; then' >> /usr/local/tomcat/bin/setenv.sh && \
     echo '  echo "PROFILER: YourKit agent enabled on port 10001"' >> /usr/local/tomcat/bin/setenv.sh && \
