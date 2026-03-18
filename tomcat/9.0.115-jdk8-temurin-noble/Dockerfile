@@ -13,7 +13,7 @@ ENV DEBUG="false"
 ENV PROFILING="false"
 ENV PORT="8080"
 ENV CONNECTION_TIMEOUT="20000"
-ENV SECURE="TRUE"
+ENV SECURE="true"
 ENV SCHEME="https"
 ENV REDIRECT_PORT="8443"
 ENV PROXY_PORT="443"
@@ -33,12 +33,19 @@ RUN echo 'JAVA_OPTS="${MORE_JAVA_OPTS} -Xmx${JAVA_HEAP_SIZE} -Xms${JAVA_HEAP_SIZ
     echo 'CATALINA_OPTS="${MORE_CATALINA_OPTS} -Dorg.apache.jasper.runtime.JspFactoryImpl.USE_POOL=false -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource"' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'if [ "$DEBUG" = "true" ]; then' >> /usr/local/tomcat/bin/setenv.sh && \
     echo '  echo "DEBUG: Remote debugging enabled on port 8000"' >> /usr/local/tomcat/bin/setenv.sh && \
-    echo '  export JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8000"' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '  if [ -z "$_JDWP_ADDED" ]; then' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '    export JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8000"' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '    export _JDWP_ADDED=1' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '  fi' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'fi' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'if [ "$PROFILING" = "true" ]; then' >> /usr/local/tomcat/bin/setenv.sh && \
     echo '  echo "PROFILER: YourKit agent enabled on port 10001"' >> /usr/local/tomcat/bin/setenv.sh && \
-    echo '  export JAVA_OPTS="$JAVA_OPTS -agentpath:/opt/yjp/YourKit-JavaProfiler-2019.1/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,disableexceptiontelemetry,probe_disable=com.yourkit.probes.builtin.*,delay=10000,port=10001,listen=all"' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '  if [ -z "$_YJP_ADDED" ]; then' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '    export JAVA_OPTS="$JAVA_OPTS -agentpath:/opt/yjp/YourKit-JavaProfiler-2019.1/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,disableexceptiontelemetry,probe_disable=com.yourkit.probes.builtin.*,delay=10000,port=10001,listen=all"' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '    export _YJP_ADDED=1' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo '  fi' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'fi' >> /usr/local/tomcat/bin/setenv.sh && \
+    echo 'echo "FINAL JAVA_OPTS: $JAVA_OPTS"' >> /usr/local/tomcat/bin/setenv.sh && \
     chmod +x /usr/local/tomcat/bin/setenv.sh
 
 # 3. Edit server.xml (Connector, Executor, and Error Valve)
