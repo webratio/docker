@@ -45,7 +45,6 @@ RUN echo 'JAVA_OPTS="${MORE_JAVA_OPTS} -Xmx${JAVA_HEAP_SIZE} -Xms${JAVA_HEAP_SIZ
     echo '    export _YJP_ADDED=1' >> /usr/local/tomcat/bin/setenv.sh && \
     echo '  fi' >> /usr/local/tomcat/bin/setenv.sh && \
     echo 'fi' >> /usr/local/tomcat/bin/setenv.sh && \
-    echo 'echo "FINAL JAVA_OPTS: $JAVA_OPTS"' >> /usr/local/tomcat/bin/setenv.sh && \
     chmod +x /usr/local/tomcat/bin/setenv.sh
 
 # 3. Edit server.xml (Connector, Executor, and Error Valve)
