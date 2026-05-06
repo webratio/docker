@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-KEYSTORE_DIR=$JAVA_HOME/jre/lib/security
+KEYSTORE_DIR=$JAVA_HOME/lib/security
 KEYSTORE_PASS=changeit
 SELF_SIGNED_CERTS_DIR=/opt/certs
 

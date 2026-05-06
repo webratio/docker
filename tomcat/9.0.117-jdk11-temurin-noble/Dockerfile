@@ -21,9 +21,13 @@ ENV PROXY_PORT="443"
 ENV MAX_HTTP_HEADER_SIZE="65536"
 ENV MAX_PARAMETER_COUNT="-1"
 
+ENV LANG=en_US.UTF-8
+
 # 1. Install utilities & Clean webapps
 RUN apt-get update -y && \
     apt-get install -y unzip wget tzdata locales dos2unix && \
+    locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8 && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /usr/local/tomcat/webapps/* && \
     mkdir -p /usr/local/tomcat/webapps
@@ -87,15 +91,15 @@ RUN dos2unix /usr/local/tomcat/bin/*.sh /javadump.sh && \
     keytool -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt -trustcacerts -importcert \
     -alias sectigo-aaa-certificate-services-root -file /usr/local/tomcat/sectigo-aaa-certificate-services-root.cer
 
-ENV LANG=en_US.UTF-8
+RUN chown -R ubuntu:ubuntu \
+    /etc/timezone \
+    /etc/localtime \
+    $JAVA_HOME/lib/security/cacerts \
+    /usr/local/tomcat \
+    /opt/yjp \
+    /javadump.sh
 
-RUN chown -R tomcat:tomcat \
-    /usr/local/tomcat/logs \
-    /usr/local/tomcat/temp \
-    /usr/local/tomcat/work \
-    /usr/local/tomcat/webapps
-
-USER tomcat
+USER ubuntu
 
 # Use absolute paths in CMD and ensure 'exec' is used to prevent port-binding ghosts
 CMD ["sh", "-c", "umask ${UMASK:-0022} && /usr/local/tomcat/bin/set_timezone.sh && /usr/local/tomcat/bin/import_self_signed_certs.sh && exec /usr/local/tomcat/bin/catalina.sh run"]
