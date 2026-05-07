@@ -5,7 +5,7 @@ set -e
 if [ -w /etc/timezone ]; then
     echo "${TZ}" > /etc/timezone
     ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
+    dpkg-reconfigure -f noninteractive tzdata
 else
-    echo "ERROR: /etc/timezone is not writable. Cannot set timezone." >&2
-    exit 1  # fail loudly
+    echo "Notice: /etc/timezone is read-only. Relying on TZ environment variable."
 fi

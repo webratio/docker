@@ -98,15 +98,5 @@ RUN dos2unix /usr/local/tomcat/bin/*.sh /javadump.sh && \
     keytool -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt -trustcacerts -importcert \
     -alias sectigo-aaa-certificate-services-root -file /usr/local/tomcat/sectigo-aaa-certificate-services-root.cer
 
-RUN chown -R ubuntu:ubuntu \
-    /etc/timezone \
-    /etc/localtime \
-    $JAVA_HOME/lib/security/cacerts \
-    /usr/local/tomcat \
-    /opt/yjp \
-    /javadump.sh
-
-USER ubuntu
-
 # Use absolute paths in CMD and ensure 'exec' is used to prevent port-binding ghosts
 CMD ["sh", "-c", "umask ${UMASK:-0022} && /usr/local/tomcat/bin/set_timezone.sh && /usr/local/tomcat/bin/import_self_signed_certs.sh && exec /usr/local/tomcat/bin/catalina.sh run"]
