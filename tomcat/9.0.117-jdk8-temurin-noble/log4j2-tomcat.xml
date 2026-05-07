@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="STDOUT_JSON" target="SYSTEM_OUT">
+      <JsonTemplateLayout/>
+    </Console>
+    <Console name="STDOUT_PLAIN" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <Routing name="STDOUT">
+      <Routes pattern="${env:LOG_FORMAT:-json}">
+        <Route key="json"  ref="STDOUT_JSON"/>
+        <Route key="plain" ref="STDOUT_PLAIN"/>
+      </Routes>
+    </Routing>
+  </Appenders>
+  <Loggers>
+    <Root level="INFO">
+      <AppenderRef ref="STDOUT"/>
+    </Root>
+  </Loggers>
+</Configuration>
