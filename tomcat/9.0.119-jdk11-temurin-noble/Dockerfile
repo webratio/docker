@@ -37,7 +37,8 @@ RUN apt-get update -y && \
     locale-gen en_US.UTF-8 && \
     update-locale LANG=en_US.UTF-8 && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -rf /usr/local/tomcat/webapps/* && \
+    rm -rf /usr/local/tomcat/webapps && \
+    rm -rf /usr/local/tomcat/webapps.dist && \
     mkdir -p /usr/local/tomcat/webapps
 
 # Edit server.xml (Connector, Executor, and Error Valve)
