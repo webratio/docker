@@ -14,4 +14,4 @@ The baked application is root-owned and read-only to UID/GID `1001:1001`. Mount 
 ### Image creation
 
 1. Create and push the image
-  * `docker buildx build --platform linux/amd64,linux/arm64 -t webratio/tomcat:9.0.120-sample-temurin-noble --push .`
+  * `docker buildx build --platform linux/amd64,linux/arm64 -t webratio/tomcat:9.0.120-sample --push .`
