@@ -5,7 +5,7 @@ This image uses the official Prometheus JMX Exporter 1.7.0 standalone JAR on Ecl
 ## Build and tag
 
 ~~~sh
-docker buildx build --platform linux/amd64,linux/arm64 --tag docker.io/webratio/jmx-exporter:1.7.0 .
+docker buildx build --platform linux/amd64,linux/arm64 --tag docker.io/webratio/jmx-exporter:1.7.0 --push .
 ~~~
 
 ## Upstream and Java compatibility
