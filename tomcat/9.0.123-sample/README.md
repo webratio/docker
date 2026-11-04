@@ -7,5 +7,5 @@ The image installs Apache Tomcat's sample WAR as the root application and retain
 ### Build
 
 ```sh
-docker buildx build --platform linux/amd64,linux/arm64 --tag webratio/tomcat:9.0.123-jdk11.0.32.1_1-temurin-noble-sample --push .
+docker buildx build --platform linux/amd64,linux/arm64 --tag webratio/tomcat:9.0.123-sample --push .
 ```
