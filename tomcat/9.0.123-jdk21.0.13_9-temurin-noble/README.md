@@ -17,6 +17,3 @@ The image runs as UID/GID `1001:1001`. At startup it copies the JDK truststore t
 ```sh
 docker buildx build --platform linux/amd64,linux/arm64 --tag webratio/tomcat:9.0.123-jdk21.0.13_9-temurin-noble --push .
 ```
-### Validation notes
-
-Local Docker builds verified the pinned downloads and checksums on amd64 and arm64 on 2026-11-05. Java 21.0.13+9, HTTP/JSP startup, and YourKit 2026.9.149 profiling were smoke-tested on both architectures; arm64 used emulation. The profiler path is quoted because the current distribution extracts into `YourKit Java Profiler`. Full application and database integration are not covered by these smoke tests.
