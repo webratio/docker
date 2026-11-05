@@ -37,12 +37,12 @@ if [ "${PROFILING:-false}" = "true" ]; then
           exit 1
           ;;
       esac
-      profiler_agent="/opt/yjp/YourKit-JavaProfiler-2019.1/bin/${profiler_arch}/libyjpagent.so"
+      profiler_agent="/opt/yjp/YourKit Java Profiler/bin/${profiler_arch}/libyjpagent.so"
       if ! [ -r "$profiler_agent" ]; then
         echo "ERROR: unsupported or unavailable YourKit agent for architecture $(uname -m)" >&2
         exit 1
       fi
-      JAVA_OPTS="$JAVA_OPTS -agentpath:${profiler_agent}=disablestacktelemetry,disableexceptiontelemetry,probe_disable=com.yourkit.probes.builtin.*,delay=10000,port=10001,listen=all"
+      JAVA_OPTS="$JAVA_OPTS -agentpath:\"${profiler_agent}\"=threads=off,exceptions=disable,probe_disable=com.yourkit.probes.builtin.*,delay=10000,port=10001,listen=all"
       ;;
   esac
 fi

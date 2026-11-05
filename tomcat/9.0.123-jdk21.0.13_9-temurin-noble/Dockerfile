@@ -63,17 +63,15 @@ RUN EXEC='<Executor name="sharedThreadPool" namePrefix="catalina-exec-" maxThrea
     sed -i '/<Connector port="8080"/,/ \/>/d' /usr/local/tomcat/conf/server.xml && \
     sed -i "/<Service name=\"Catalina\">/a \\    $EXEC\n    $CONN" /usr/local/tomcat/conf/server.xml && \
     sed -i '/<\/Host>/i \  <Valve className="org.apache.catalina.valves.ErrorReportValve" showReport="${DEBUG}" showServerInfo="${DEBUG}" />' /usr/local/tomcat/conf/server.xml && \
-    sed -i '/<servlet-class>org.apache.jasper.servlet.JspServlet<\/servlet-class>/a \
-    <init-param><param-name>enablePooling</param-name><param-value>false</param-value></init-param>\n\
-    <init-param><param-name>development</param-name><param-value>false</param-value></init-param>\n\' /usr/local/tomcat/conf/web.xml
+    sed -i '/<servlet-class>org.apache.jasper.servlet.JspServlet<\/servlet-class>/a\    <init-param><param-name>enablePooling</param-name><param-value>false</param-value></init-param>\n    <init-param><param-name>development</param-name><param-value>false</param-value></init-param>' /usr/local/tomcat/conf/web.xml
 
 RUN set -eu; \
     case "${TARGETARCH}" in \
       amd64) \
-        yourkit_arch="x86-64"; \
+        yourkit_arch="x64"; yourkit_agent_arch="linux-x86-64"; \
         yourkit_sha="${YOURKIT_SHA256_AMD64}" ;; \
       arm64) \
-        yourkit_arch="arm64"; \
+        yourkit_arch="arm64"; yourkit_agent_arch="linux-arm-64"; \
         yourkit_sha="${YOURKIT_SHA256_ARM64}" ;; \
       *) \
         echo "Unsupported architecture: ${TARGETARCH}" >&2; \
@@ -81,9 +79,10 @@ RUN set -eu; \
     esac; \
     test -n "${yourkit_sha}"; \
     wget -q -O /tmp/yourkit.zip \
-      "https://www.yourkit.com/dl/installer?product=yjp&arch=${yourkit_arch}&os=Linux&version=${YOURKIT_VERSION}"; \
+      "https://download.yourkit.com/yjp/${YOURKIT_VERSION}/YourKit-Java-Profiler-${YOURKIT_VERSION}-${yourkit_arch}.zip"; \
     echo "${yourkit_sha}  /tmp/yourkit.zip" | sha256sum -c -; \
     unzip -q /tmp/yourkit.zip -d /opt/yjp; \
+    test -r "/opt/yjp/YourKit Java Profiler/bin/${yourkit_agent_arch}/libyjpagent.so"; \
     rm -f /tmp/yourkit.zip
 
 RUN wget -q -O /usr/local/tomcat/lib/mysql-connector-j-26.10.0.jar "${MYSQL_JDBC_DRIVER_URL}" && \
