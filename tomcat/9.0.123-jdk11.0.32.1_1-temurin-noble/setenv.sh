@@ -1,20 +1,18 @@
 #!/bin/sh
 
-JAVA_OPTS="${JAVA_OPTS:-} ${MORE_JAVA_OPTS:-} \
-  -Xmx${JAVA_HEAP_SIZE} \
-  -Xms${JAVA_HEAP_SIZE} \
+JAVA_OPTS="-Xmx${JAVA_HEAP_SIZE} \
   -XX:MaxMetaspaceSize=${JAVA_METASPACE_SIZE} \
-  -XX:+IgnoreUnrecognizedVMOptions \
   -XX:+UseCompressedOops \
   -server \
   -Djava.security.egd=file:/dev/./urandom \
   -Djavax.net.ssl.trustStore=/usr/local/tomcat/temp/cacerts \
   -Djavax.net.ssl.trustStorePassword=changeit \
-  -Duser.timezone=${TZ:-Europe/Rome}"
+  -Duser.timezone=${TZ:-Europe/Rome} \
+  ${JAVA_OPTS:-} ${MORE_JAVA_OPTS:-}"
 
-CATALINA_OPTS="${CATALINA_OPTS:-} ${MORE_CATALINA_OPTS:-} \
-  -Dorg.apache.jasper.runtime.JspFactoryImpl.USE_POOL=false \
-  -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource"
+CATALINA_OPTS="-Dorg.apache.jasper.runtime.JspFactoryImpl.USE_POOL=false \
+  -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource \
+  ${CATALINA_OPTS:-} ${MORE_CATALINA_OPTS:-}"
 
 CLASSPATH="/usr/local/tomcat/log4j/log4j-appserver.jar:/usr/local/tomcat/log4j/log4j-api.jar:/usr/local/tomcat/log4j/log4j-core.jar:/usr/local/tomcat/log4j/log4j-layout-template-json.jar:/usr/local/tomcat/log4j:${CLASSPATH:-}"
 

@@ -1,4 +1,4 @@
-FROM webratio/tomcat:9.0.123-jdk11.0.32.1_1-temurin-noble
+FROM webratio/tomcat:9.0.123-jdk21.0.13_9-temurin-noble
 
 ARG SAMPLE_WAR_SHA256=89b33caa5bf4cfd235f060c396cb1a5acb2734a1366db325676f48c5f5ed92e5
 
